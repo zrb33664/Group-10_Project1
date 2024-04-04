@@ -76,6 +76,21 @@ FROM CoachingSession
 GROUP BY Coach_coachID
 HAVING TotalSessions > 5;
 
+#7. This SQL query retrieves data from the ProShopItem table, specifically selecting the productID, productName, category, and productPrice columns. The ORDER BY clause is utilized to sort the result set in descending order based on the productPrice column, ensuring that the most expensive items appear at the top of the list. This information aids managers in understanding the pricing structure of the pro shop and allows them to make informed decisions regarding inventory management, pricing adjustments, and marketing strategies. Additionally, recognizing the most expensive items can help managers highlight premium offerings to customers and potentially increase revenue by promoting high-value products. 
+
+SELECT productID, productName, category, productPrice
+FROM ProShopItem
+ORDER BY productPrice DESC;
+
+#8. By executing this query, the club manager obtains a list of top-selling items in the pro shop, along with the total quantity sold for each item. This information helps the manager understand the popularity of different products among customers and enables informed decisions regarding inventory management, stock replenishment, and marketing strategies. Additionally, identifying top-selling items allows the manager to prioritize these items in promotions and displays, potentially increasing sales and revenue. Overall, this query serves as a valuable tool for optimizing inventory management and enhancing profitability in the pro shop.
+
+SELECT PSI.productID, PSI.productName, PSI.category,
+SUM(P.qtyPurchased) AS TotalQuantitySold
+FROM ProShopItem AS PSI
+JOIN Receipt AS R ON PSI.productID = R.ProShopItem_productID
+JOIN Purchase AS P ON R.Purchase_purchaseID=P.purchaseID
+GROUP BY PSI.productID, PSI.productName, PSI.category
+ORDER BY TotalQuantitySold DESC;
 
 
 
