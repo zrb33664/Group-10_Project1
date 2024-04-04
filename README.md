@@ -15,7 +15,8 @@ Overall, our database model serves as the cornerstone of our club's operations, 
 
 Queries
 
-#1. This query is designed to retrieve details of members whose memberships have expired. It serves as a valuable tool for club managers to efficiently identify members whose memberships require renewal or termination. By executing this query, the club manager can promptly obtain a list of members with an expired membership. This information enables the manager to take necessary actions, such as sending renewal reminders to members or processing membership terminations as per the club’s policies. Additionally, having insight into expired memberships aids budgeting and resource allocation on club revenue and membership statistics. 
+#1. This query is designed to retrieve details of members whose memberships have expired. It serves as a valuable tool for club managers to efficiently identify members whose memberships require renewal or termination. By executing this query, the club manager can promptly obtain a list of members with an expired membership. This information enables the manager to take necessary actions, such as sending renewal reminders to members or processing membership terminations as per the club’s policies. Additionally, having insight into expired memberships aids budgeting and resource allocation on club revenue and membership statistics.
+
 SELECT 
 m.memberID,
 m.memberFirstName,
@@ -27,6 +28,7 @@ FROM Members AS m
 WHERE m.expirationDate < CURDATE();
 
 #2. By executing this query, the club manager obtains a list of members along with their maximum transaction amounts. This information allows the manager to identify members who are willing to make significant purchases during a single visit to the club. Understanding members' spending behaviors empowers the manager to tailor marketing strategies, promotions, and services to cater to high-spending members, potentially fostering increased revenue generation for the club. Moreover, recognizing and acknowledging members who contribute significantly to the club's financial success can enhance member satisfaction and loyalty. Overall, this query aids managers in making informed decisions regarding member engagement and revenue optimization within the club.
+
 SELECT
 memberID,
 memberFirstName,
@@ -38,6 +40,7 @@ AS MaxTransactionAmount
 FROM Members M;
 
 #3. Within this query, the club manager obtains a list of active vendors who have supplied products for recent transactions within the last year. This information enables the manager to assess the reliability and consistency of vendors in supplying products to the club. Additionally, it facilitates communication and collaboration with vendors to ensure smooth procurement processes and maintain inventory levels. 
+
 SELECT
 DISTINCT V.vendorID,
 V.vendorName,
