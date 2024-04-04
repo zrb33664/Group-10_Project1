@@ -134,9 +134,10 @@ AND C.certificationLevel = 'expert');
 
 ![Screenshot 2024-04-04 160723](https://github.com/zrb33664/Group-10_Project1/assets/150175934/a822dfc2-e19b-4ba1-b082-65292ce62ac5)
 
-
-
-
-
 ![Group Project 1 Matrix](https://github.com/zrb33664/Group-10_Project1/assets/163185204/128ce132-6c4b-49d7-b8d5-3f80b0a2885b)
 
+![Tables 1-2](https://github.com/zrb33664/Group-10_Project1/assets/163185204/14740281-4de1-4b1f-9f83-76501e5a6fb0)
+![Tables 3-5](https://github.com/zrb33664/Group-10_Project1/assets/163185204/91683ac1-ab0c-49be-aa62-8fa9358605c0)
+![Tables 6-8](https://github.com/zrb33664/Group-10_Project1/assets/163185204/8c277721-756b-472a-b8d5-69cd394aff5c)
+![Tables 9-12](https://github.com/zrb33664/Group-10_Project1/assets/163185204/05e86dfc-1c8a-4e5d-ab0a-08e3d34bd01e)
+![Tables 12-15](https://github.com/zrb33664/Group-10_Project1/assets/163185204/d2298c51-ec05-4bd0-9415-2946688369a2)
