@@ -70,6 +70,8 @@ JOIN Participation ON Members.memberID=Participation.Members_memberID
 JOIN Tournaments ON Participation.Tournaments_eventID=Tournaments.eventID
 GROUP BY memberFirstName, memberLastName;
 
+![Screenshot 2024-04-04 155847](https://github.com/zrb33664/Group-10_Project1/assets/150175934/166a83ac-8c29-4d8d-97b9-a38134fbca18)
+
 #5. In this query, the club manager obtains a list of club members along with the total number of coaching sessions attended by each member. This information provides valuable insights into the popularity of coaching programs among members, allowing the manager to identify members who actively participate in coaching sessions and those who may require additional encouragement or support to participate. Furthermore, understanding member enrollment in coaching sessions enables the manager to assess the effectiveness of coaching programs, identify trends, and make data-driven decisions to enhance the overall coaching experience for members. 
 
 SELECT Members_memberID,
@@ -77,6 +79,8 @@ COUNT(*) AS TotalSessions
 FROM CoachingSession
 GROUP BY Members_memberID
 ORDER BY TotalSessions DESC;
+
+![Screenshot 2024-04-04 160036](https://github.com/zrb33664/Group-10_Project1/assets/150175934/c31dd166-f2f1-46a4-920a-391bf02dfd3e)
 
 #6. This SQL query is crafted to retrieve information about coaches who conduct more than 5 coaching sessions. By executing this query, club managers can gain insights into the popularity and effectiveness of individual coaches, allowing them to assess their performance and make informed decisions regarding coaching allocations and recognition. This information provides valuable insights into the workload and effectiveness of individual coaches, allowing the manager to identify coaches who are favored by club members and demonstrate initiative in conducting coaching sessions. Additionally, recognizing coaches who conduct a high volume of coaching sessions can serve as a form of encouragement and acknowledgment for their dedication and contribution to the club. Furthermore, this query enables the manager to make data-driven decisions regarding coaching allocations, scheduling, and performance evaluation to optimize the coaching experience for club members. 
 
