@@ -110,6 +110,7 @@ JOIN Members AS M ON ER.Members_memberID=M.memberID
 JOIN EquipmentRentals AS E ON ER.equipmentName=E.equipmentName;
 
 #10. This SQL query is designed to retrieve coaching lessons tailored for kids, conducted by expert coaches. By executing this query, the club manager obtains a list of coaching lessons specifically designed for kids and conducted by expert coaches. This information is valuable for high-spending club members who seek to enroll their children in tennis lessons from a young age to develop their skills at a high level. The query ensures that the lessons selected meet the criteria of being kid-focused and led by coaches with expertise in the field. Overall, this query serves as a useful tool for providing targeted information to club members seeking premium coaching services for their children.
+
 SELECT programName, programType, programSchedule
 FROM Lessons AS L
 WHERE programType REGEXP 'Glorified Daycare'
