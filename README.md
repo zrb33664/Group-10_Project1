@@ -26,3 +26,5 @@ SELECT
     m.expirationDate
 FROM Members AS m
 WHERE m.expirationDate < CURDATE();
+![Screenshot 2024-04-04 155513](https://github.com/zrb33664/Group-10_Project1/assets/150175934/2752a1f0-e963-49fc-97e5-39580f39073e)
+
