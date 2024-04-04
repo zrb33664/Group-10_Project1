@@ -101,6 +101,25 @@ JOIN Purchase AS P ON R.Purchase_purchaseID=P.purchaseID
 GROUP BY PSI.productID, PSI.productName, PSI.category
 ORDER BY TotalQuantitySold DESC;
 
+#9. This SQL query retrieves details of equipment rentals made by active members. The query selects the rentalID from the EquipmentRentals table, along with the concatenated first and last names of active members (MemberName) from the Members table, and the equipmentName from the EquipmentRentals table.The concatenated MemberName provides a clear representation of the active member associated with each equipment rental. This information helps the manager keep track of equipment usage by active members, facilitating inventory management and ensuring members have access to the equipment they need.
+
+SELECT ER.rentalID, CONCAT(M.memberFirstName, ' ', M.memberLastName) AS MemberName,
+E.equipmentName 
+FROM EquipmentRentals AS ER
+JOIN Members AS M ON ER.Members_memberID=M.memberID
+JOIN EquipmentRentals AS E ON ER.equipmentName=E.equipmentName;
+
+#10. This SQL query is designed to retrieve coaching lessons tailored for kids, conducted by expert coaches. By executing this query, the club manager obtains a list of coaching lessons specifically designed for kids and conducted by expert coaches. This information is valuable for high-spending club members who seek to enroll their children in tennis lessons from a young age to develop their skills at a high level. The query ensures that the lessons selected meet the criteria of being kid-focused and led by coaches with expertise in the field. Overall, this query serves as a useful tool for providing targeted information to club members seeking premium coaching services for their children.
+SELECT programName, programType, programSchedule
+FROM Lessons AS L
+WHERE programType REGEXP 'Glorified Daycare'
+AND EXISTS (
+SELECT TRUE
+FROM Coach AS C
+WHERE C.coachID = L.Coach_coachID
+AND C.certificationLevel = 'expert');
+
+
 
 
 
