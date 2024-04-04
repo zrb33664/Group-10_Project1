@@ -89,11 +89,15 @@ FROM CoachingSession
 GROUP BY Coach_coachID
 HAVING TotalSessions > 5;
 
+![Screenshot 2024-04-04 160235](https://github.com/zrb33664/Group-10_Project1/assets/150175934/e4f7966b-cdf7-415a-9af7-19addf7ee6a9)
+
 #7. This SQL query retrieves data from the ProShopItem table, specifically selecting the productID, productName, category, and productPrice columns. The ORDER BY clause is utilized to sort the result set in descending order based on the productPrice column, ensuring that the most expensive items appear at the top of the list. This information aids managers in understanding the pricing structure of the pro shop and allows them to make informed decisions regarding inventory management, pricing adjustments, and marketing strategies. Additionally, recognizing the most expensive items can help managers highlight premium offerings to customers and potentially increase revenue by promoting high-value products. 
 
 SELECT productID, productName, category, productPrice
 FROM ProShopItem
 ORDER BY productPrice DESC;
+
+![Screenshot 2024-04-04 160331](https://github.com/zrb33664/Group-10_Project1/assets/150175934/63fab58f-bda4-44b4-91fd-074544cf7dc2)
 
 #8. By executing this query, the club manager obtains a list of top-selling items in the pro shop, along with the total quantity sold for each item. This information helps the manager understand the popularity of different products among customers and enables informed decisions regarding inventory management, stock replenishment, and marketing strategies. Additionally, identifying top-selling items allows the manager to prioritize these items in promotions and displays, potentially increasing sales and revenue. Overall, this query serves as a valuable tool for optimizing inventory management and enhancing profitability in the pro shop.
 
@@ -105,6 +109,8 @@ JOIN Purchase AS P ON R.Purchase_purchaseID=P.purchaseID
 GROUP BY PSI.productID, PSI.productName, PSI.category
 ORDER BY TotalQuantitySold DESC;
 
+![Screenshot 2024-04-04 160513](https://github.com/zrb33664/Group-10_Project1/assets/150175934/d81ac466-afc7-4c41-8c56-542929c3be22)
+
 #9. This SQL query retrieves details of equipment rentals made by active members. The query selects the rentalID from the EquipmentRentals table, along with the concatenated first and last names of active members (MemberName) from the Members table, and the equipmentName from the EquipmentRentals table.The concatenated MemberName provides a clear representation of the active member associated with each equipment rental. This information helps the manager keep track of equipment usage by active members, facilitating inventory management and ensuring members have access to the equipment they need.
 
 SELECT ER.rentalID, CONCAT(M.memberFirstName, ' ', M.memberLastName) AS MemberName,
@@ -112,6 +118,8 @@ E.equipmentName
 FROM EquipmentRentals AS ER
 JOIN Members AS M ON ER.Members_memberID=M.memberID
 JOIN EquipmentRentals AS E ON ER.equipmentName=E.equipmentName;
+
+![Screenshot 2024-04-04 160623](https://github.com/zrb33664/Group-10_Project1/assets/150175934/4ad38ac2-d7e4-4a34-b3e5-18add701fd44)
 
 #10. This SQL query is designed to retrieve coaching lessons tailored for kids, conducted by expert coaches. By executing this query, the club manager obtains a list of coaching lessons specifically designed for kids and conducted by expert coaches. This information is valuable for high-spending club members who seek to enroll their children in tennis lessons from a young age to develop their skills at a high level. The query ensures that the lessons selected meet the criteria of being kid-focused and led by coaches with expertise in the field. Overall, this query serves as a useful tool for providing targeted information to club members seeking premium coaching services for their children.
 
@@ -124,6 +132,7 @@ FROM Coach AS C
 WHERE C.coachID = L.Coach_coachID
 AND C.certificationLevel = 'expert');
 
+![Screenshot 2024-04-04 160723](https://github.com/zrb33664/Group-10_Project1/assets/150175934/a822dfc2-e19b-4ba1-b082-65292ce62ac5)
 
 
 
