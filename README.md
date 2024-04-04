@@ -12,3 +12,17 @@ Our database model encompasses several crucial entities essential for the seamle
 Overall, our database model serves as the cornerstone of our club's operations, enabling streamlined management of lessons, reservations, equipment rentals, tournaments, coaching services, member interactions, and pro shop inventory. Through the effective utilization of these entities and their relationships, we uphold our commitment to delivering exceptional tennis experiences and fostering a tennis community with organized, efficient, and tracking systems.
 
 ![Group Project 1 Model](https://github.com/zrb33664/Group-10_Project1/assets/163185204/7b2e67b7-df99-4537-b950-f1d2c32cb8c5)
+
+
+Queries:
+
+#1. This query is designed to retrieve details of members whose memberships have expired. It serves as a valuable tool for club managers to efficiently identify members whose memberships require renewal or termination. By executing this query, the club manager can promptly obtain a list of members with an expired membership. This information enables the manager to take necessary actions, such as sending renewal reminders to members or processing membership terminations as per the club’s policies. Additionally, having insight into expired memberships aids budgeting and resource allocation on club revenue and membership statistics. 
+SELECT 
+    m.memberID,
+    m.memberFirstName,
+    m.memberLastName,
+    m.membershipType,
+    m.joinDate,
+    m.expirationDate
+FROM Members AS m
+WHERE m.expirationDate < CURDATE();
