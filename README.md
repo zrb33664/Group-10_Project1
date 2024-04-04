@@ -27,6 +27,9 @@ m.expirationDate
 FROM Members AS m
 WHERE m.expirationDate < CURDATE();
 
+![Screenshot 2024-04-04 155513](https://github.com/zrb33664/Group-10_Project1/assets/150175934/e118d624-3dd9-41fb-830d-219d3faa14af)
+
+
 #2. By executing this query, the club manager obtains a list of members along with their maximum transaction amounts. This information allows the manager to identify members who are willing to make significant purchases during a single visit to the club. Understanding members' spending behaviors empowers the manager to tailor marketing strategies, promotions, and services to cater to high-spending members, potentially fostering increased revenue generation for the club. Moreover, recognizing and acknowledging members who contribute significantly to the club's financial success can enhance member satisfaction and loyalty. Overall, this query aids managers in making informed decisions regarding member engagement and revenue optimization within the club.
 
 SELECT
@@ -38,6 +41,9 @@ FROM Transaction
 WHERE Members_memberID=M.memberID)
 AS MaxTransactionAmount
 FROM Members M;
+
+![Screenshot 2024-04-04 155749](https://github.com/zrb33664/Group-10_Project1/assets/150175934/a14b86ba-7362-4ca3-8e6e-f63943b47f79)
+
 
 #3. Within this query, the club manager obtains a list of active vendors who have supplied products for recent transactions within the last year. This information enables the manager to assess the reliability and consistency of vendors in supplying products to the club. Additionally, it facilitates communication and collaboration with vendors to ensure smooth procurement processes and maintain inventory levels. 
 
@@ -52,6 +58,9 @@ JOIN ProShopItem AS P ON V.vendorID = P.Vendor_vendorID
 JOIN Receipt AS R ON P.productID = R.ProShopItem_productID
 JOIN Purchase AS PU ON R.Purchase_purchaseID = PU.purchaseID
 WHERE PU.purchaseDate > 2024-01-01;
+
+![Screenshot 2024-04-04 155610](https://github.com/zrb33664/Group-10_Project1/assets/150175934/d35b30b9-7655-49c9-8aae-0373bd5f12b3)
+
 
 #4. This SQL query is designed to track tournament participation among club members and calculate the total amount they have paid in registration fees. By retrieving this information, club managers can gain insights into members who participate in high-paying tournaments, enabling them to encourage continued participation and engagement in future events.the club manager obtains a list of club members along with the total amount they have paid in tournament registration fees. This information enables the manager to identify members who are actively participating in tournaments and contributing significant revenue to the club through registration fees. Armed with this insight, the manager can tailor incentives, promotions, or rewards to encourage continued participation and foster member engagement. Additionally, understanding the participation patterns of members allows the manager to plan future tournaments and allocate resources effectively to maximize member satisfaction and club revenue.
 
