@@ -13,18 +13,70 @@ Overall, our database model serves as the cornerstone of our club's operations, 
 
 ![Group Project 1 Model](https://github.com/zrb33664/Group-10_Project1/assets/163185204/7b2e67b7-df99-4537-b950-f1d2c32cb8c5)
 
-
-Queries:
+Queries
 
 #1. This query is designed to retrieve details of members whose memberships have expired. It serves as a valuable tool for club managers to efficiently identify members whose memberships require renewal or termination. By executing this query, the club manager can promptly obtain a list of members with an expired membership. This information enables the manager to take necessary actions, such as sending renewal reminders to members or processing membership terminations as per the club’s policies. Additionally, having insight into expired memberships aids budgeting and resource allocation on club revenue and membership statistics. 
 SELECT 
-    m.memberID,
-    m.memberFirstName,
-    m.memberLastName,
-    m.membershipType,
-    m.joinDate,
-    m.expirationDate
+m.memberID,
+m.memberFirstName,
+m.memberLastName,
+m.membershipType,
+m.joinDate,
+m.expirationDate
 FROM Members AS m
 WHERE m.expirationDate < CURDATE();
-![Screenshot 2024-04-04 155513](https://github.com/zrb33664/Group-10_Project1/assets/150175934/2752a1f0-e963-49fc-97e5-39580f39073e)
+
+#2. By executing this query, the club manager obtains a list of members along with their maximum transaction amounts. This information allows the manager to identify members who are willing to make significant purchases during a single visit to the club. Understanding members' spending behaviors empowers the manager to tailor marketing strategies, promotions, and services to cater to high-spending members, potentially fostering increased revenue generation for the club. Moreover, recognizing and acknowledging members who contribute significantly to the club's financial success can enhance member satisfaction and loyalty. Overall, this query aids managers in making informed decisions regarding member engagement and revenue optimization within the club.
+SELECT
+memberID,
+memberFirstName,
+memberLastName,
+(SELECT MAX(amount)
+FROM Transaction
+WHERE Members_memberID=M.memberID)
+AS MaxTransactionAmount
+FROM Members M;
+
+#3. Within this query, the club manager obtains a list of active vendors who have supplied products for recent transactions within the last year. This information enables the manager to assess the reliability and consistency of vendors in supplying products to the club. Additionally, it facilitates communication and collaboration with vendors to ensure smooth procurement processes and maintain inventory levels. 
+SELECT
+DISTINCT V.vendorID,
+V.vendorName,
+V.contactPerson,
+V.vendorEmail,
+V.phoneNumber
+FROM Vendor AS V
+JOIN ProShopItem AS P ON V.vendorID = P.Vendor_vendorID
+JOIN Receipt AS R ON P.productID = R.ProShopItem_productID
+JOIN Purchase AS PU ON R.Purchase_purchaseID = PU.purchaseID
+WHERE PU.purchaseDate > 2024-01-01;
+
+#4. This SQL query is designed to track tournament participation among club members and calculate the total amount they have paid in registration fees. By retrieving this information, club managers can gain insights into members who participate in high-paying tournaments, enabling them to encourage continued participation and engagement in future events.the club manager obtains a list of club members along with the total amount they have paid in tournament registration fees. This information enables the manager to identify members who are actively participating in tournaments and contributing significant revenue to the club through registration fees. Armed with this insight, the manager can tailor incentives, promotions, or rewards to encourage continued participation and foster member engagement. Additionally, understanding the participation patterns of members allows the manager to plan future tournaments and allocate resources effectively to maximize member satisfaction and club revenue.
+
+SELECT DISTINCT memberFirstName, memberLastName, SUM(Participation.registrationFee)
+FROM Members
+JOIN Participation ON Members.memberID=Participation.Members_memberID
+JOIN Tournaments ON Participation.Tournaments_eventID=Tournaments.eventID
+GROUP BY memberFirstName, memberLastName;
+
+#5. In this query, the club manager obtains a list of club members along with the total number of coaching sessions attended by each member. This information provides valuable insights into the popularity of coaching programs among members, allowing the manager to identify members who actively participate in coaching sessions and those who may require additional encouragement or support to participate. Furthermore, understanding member enrollment in coaching sessions enables the manager to assess the effectiveness of coaching programs, identify trends, and make data-driven decisions to enhance the overall coaching experience for members. 
+
+SELECT Members_memberID,
+COUNT(*) AS TotalSessions
+FROM CoachingSession
+GROUP BY Members_memberID
+ORDER BY TotalSessions DESC;
+
+#6. This SQL query is crafted to retrieve information about coaches who conduct more than 5 coaching sessions. By executing this query, club managers can gain insights into the popularity and effectiveness of individual coaches, allowing them to assess their performance and make informed decisions regarding coaching allocations and recognition. This information provides valuable insights into the workload and effectiveness of individual coaches, allowing the manager to identify coaches who are favored by club members and demonstrate initiative in conducting coaching sessions. Additionally, recognizing coaches who conduct a high volume of coaching sessions can serve as a form of encouragement and acknowledgment for their dedication and contribution to the club. Furthermore, this query enables the manager to make data-driven decisions regarding coaching allocations, scheduling, and performance evaluation to optimize the coaching experience for club members. 
+
+SELECT Coach_coachID, COUNT(*) AS TotalSessions
+FROM CoachingSession
+GROUP BY Coach_coachID
+HAVING TotalSessions > 5;
+
+
+
+
+
+
+![Group Project 1 Matrix](https://github.com/zrb33664/Group-10_Project1/assets/163185204/128ce132-6c4b-49d7-b8d5-3f80b0a2885b)
 
